@@ -1,18 +1,18 @@
-'use strict'
+'use strict';
 
-const t = require('tap')
-const makeTest = require('./make-test')
-const { join } = require('path')
+const t = require('tap');
+const makeTest = require('./make-test');
+const { join } = require('path');
 
-process.env.VALUE_FROM_ENV = 'pippo'
+process.env.VALUE_FROM_ENV = 'pippo';
 
 const tests = [
   {
     name: 'empty ok',
     schema: { type: 'object' },
-    data: { },
+    data: {},
     isOk: true,
-    confExpected: {}
+    confExpected: {},
   },
   {
     name: 'simple object - ok',
@@ -20,17 +20,17 @@ const tests = [
       type: 'object',
       properties: {
         PORT: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
     data: {
-      PORT: '44'
+      PORT: '44',
     },
     isOk: true,
     confExpected: {
-      PORT: '44'
-    }
+      PORT: '44',
+    },
   },
   {
     name: 'simple object - ok - coerce value',
@@ -38,17 +38,17 @@ const tests = [
       type: 'object',
       properties: {
         PORT: {
-          type: 'integer'
-        }
-      }
+          type: 'integer',
+        },
+      },
     },
     data: {
-      PORT: '44'
+      PORT: '44',
     },
     isOk: true,
     confExpected: {
-      PORT: 44
-    }
+      PORT: 44,
+    },
   },
   {
     name: 'simple object - ok - remove additional properties',
@@ -56,18 +56,18 @@ const tests = [
       type: 'object',
       properties: {
         PORT: {
-          type: 'integer'
-        }
-      }
+          type: 'integer',
+        },
+      },
     },
     data: {
       PORT: '44',
-      ANOTHER_PORT: '55'
+      ANOTHER_PORT: '55',
     },
     isOk: true,
     confExpected: {
-      PORT: 44
-    }
+      PORT: 44,
+    },
   },
   {
     name: 'simple object - ok - use default',
@@ -76,15 +76,15 @@ const tests = [
       properties: {
         PORT: {
           type: 'integer',
-          default: 5555
-        }
-      }
+          default: 5555,
+        },
+      },
     },
-    data: { },
+    data: {},
     isOk: true,
     confExpected: {
-      PORT: 5555
-    }
+      PORT: 5555,
+    },
   },
   {
     name: 'simple object - ok - required + default',
@@ -94,15 +94,15 @@ const tests = [
       properties: {
         PORT: {
           type: 'integer',
-          default: 6666
-        }
-      }
+          default: 6666,
+        },
+      },
     },
-    data: { },
+    data: {},
     isOk: true,
     confExpected: {
-      PORT: 6666
-    }
+      PORT: 6666,
+    },
   },
   {
     name: 'simple object - ok - allow array',
@@ -112,15 +112,15 @@ const tests = [
       properties: {
         PORT: {
           type: 'integer',
-          default: 6666
-        }
-      }
+          default: 6666,
+        },
+      },
     },
-    data: [{ }],
+    data: [{}],
     isOk: true,
     confExpected: {
-      PORT: 6666
-    }
+      PORT: 6666,
+    },
   },
   {
     name: 'simple object - ok - merge multiple object + env',
@@ -130,23 +130,23 @@ const tests = [
       properties: {
         PORT: {
           type: 'integer',
-          default: 6666
+          default: 6666,
         },
         MONGODB_URL: {
-          type: 'string'
+          type: 'string',
         },
         VALUE_FROM_ENV: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
     data: [{ PORT: 3333 }, { MONGODB_URL: 'mongodb://localhost/pippo' }],
     isOk: true,
     confExpected: {
       PORT: 3333,
       MONGODB_URL: 'mongodb://localhost/pippo',
-      VALUE_FROM_ENV: 'pippo'
-    }
+      VALUE_FROM_ENV: 'pippo',
+    },
   },
   {
     name: 'simple object - ok - load only from env',
@@ -155,15 +155,15 @@ const tests = [
       required: ['VALUE_FROM_ENV'],
       properties: {
         VALUE_FROM_ENV: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
     data: undefined,
     isOk: true,
     confExpected: {
-      VALUE_FROM_ENV: 'pippo'
-    }
+      VALUE_FROM_ENV: 'pippo',
+    },
   },
   {
     name: 'simple object - ok - opts override environment',
@@ -172,15 +172,15 @@ const tests = [
       required: ['VALUE_FROM_ENV'],
       properties: {
         VALUE_FROM_ENV: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
     data: { VALUE_FROM_ENV: 'pluto' },
     isOk: true,
     confExpected: {
-      VALUE_FROM_ENV: 'pluto'
-    }
+      VALUE_FROM_ENV: 'pluto',
+    },
   },
   {
     name: 'simple object - ok - load only from .env',
@@ -189,16 +189,16 @@ const tests = [
       required: ['VALUE_FROM_DOTENV'],
       properties: {
         VALUE_FROM_DOTENV: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     },
     data: undefined,
     isOk: true,
     dotenv: { path: join(__dirname, '.env') },
     confExpected: {
-      VALUE_FROM_DOTENV: 'look ma'
-    }
+      VALUE_FROM_DOTENV: 'look ma',
+    },
   },
   {
     name: 'simple object - KO',
@@ -207,13 +207,13 @@ const tests = [
       required: ['PORT'],
       properties: {
         PORT: {
-          type: 'integer'
-        }
-      }
+          type: 'integer',
+        },
+      },
     },
-    data: { },
+    data: {},
     isOk: false,
-    errorMessage: 'env must have required property \'PORT\''
+    errorMessage: "env must have required property 'PORT'",
   },
   {
     name: 'simple object - invalid data',
@@ -222,13 +222,14 @@ const tests = [
       required: ['PORT'],
       properties: {
         PORT: {
-          type: 'integer'
-        }
-      }
+          type: 'integer',
+        },
+      },
     },
     data: [],
     isOk: false,
-    errorMessage: 'opts/data must NOT have fewer than 1 items, opts/data must be object, opts/data must match exactly one schema in oneOf'
+    errorMessage:
+      'opts/data must NOT have fewer than 1 items, opts/data must be object, opts/data must match exactly one schema in oneOf',
   },
   {
     name: 'simple object - ok - with separator',
@@ -238,17 +239,17 @@ const tests = [
       properties: {
         ALLOWED_HOSTS: {
           type: 'string',
-          separator: ','
-        }
-      }
+          separator: ',',
+        },
+      },
     },
     data: {
-      ALLOWED_HOSTS: '127.0.0.1,0.0.0.0'
+      ALLOWED_HOSTS: '127.0.0.1,0.0.0.0',
     },
     isOk: true,
     confExpected: {
-      ALLOWED_HOSTS: ['127.0.0.1', '0.0.0.0']
-    }
+      ALLOWED_HOSTS: ['127.0.0.1', '0.0.0.0'],
+    },
   },
   {
     name: 'simple object - ok - with separator - only one value',
@@ -258,17 +259,17 @@ const tests = [
       properties: {
         ALLOWED_HOSTS: {
           type: 'string',
-          separator: ','
-        }
-      }
+          separator: ',',
+        },
+      },
     },
     data: {
-      ALLOWED_HOSTS: '127.0.0.1'
+      ALLOWED_HOSTS: '127.0.0.1',
     },
     isOk: true,
     confExpected: {
-      ALLOWED_HOSTS: ['127.0.0.1']
-    }
+      ALLOWED_HOSTS: ['127.0.0.1'],
+    },
   },
   {
     name: 'simple object - ok - with separator - no values',
@@ -278,17 +279,17 @@ const tests = [
       properties: {
         ALLOWED_HOSTS: {
           type: 'string',
-          separator: ','
-        }
-      }
+          separator: ',',
+        },
+      },
     },
     data: {
-      ALLOWED_HOSTS: ''
+      ALLOWED_HOSTS: '',
     },
     isOk: true,
     confExpected: {
-      ALLOWED_HOSTS: []
-    }
+      ALLOWED_HOSTS: [],
+    },
   },
   {
     name: 'simple object - KO - with separator',
@@ -298,13 +299,13 @@ const tests = [
       properties: {
         ALLOWED_HOSTS: {
           type: 'string',
-          separator: ','
-        }
-      }
+          separator: ',',
+        },
+      },
     },
     data: {},
     isOk: false,
-    errorMessage: 'env must have required property \'ALLOWED_HOSTS\''
+    errorMessage: "env must have required property 'ALLOWED_HOSTS'",
   },
   {
     name: 'simple object - KO - multiple required properties',
@@ -315,24 +316,31 @@ const tests = [
         A: { type: 'string' },
         B: { type: 'string' },
         C: { type: 'string' },
-        D: { type: 'string' }
-      }
+        D: { type: 'string' },
+      },
     },
     data: {},
     isOk: false,
-    errorMessage: 'env must have required property \'A\', env must have required property \'B\', env must have required property \'C\''
-  }
-]
+    errorMessage:
+      "env must have required property 'A', env must have required property 'B', env must have required property 'C'",
+  },
+];
 
 tests.forEach(function (testConf) {
-  t.test(testConf.name, t => {
+  t.test(testConf.name, (t) => {
     const options = {
       schema: testConf.schema,
       data: testConf.data,
       dotenv: testConf.dotenv,
-      dotenvConfig: testConf.dotenvConfig
-    }
+      dotenvConfig: testConf.dotenvConfig,
+    };
 
-    makeTest(t, options, testConf.isOk, testConf.confExpected, testConf.errorMessage)
-  })
-})
+    makeTest(
+      t,
+      options,
+      testConf.isOk,
+      testConf.confExpected,
+      testConf.errorMessage,
+    );
+  });
+});

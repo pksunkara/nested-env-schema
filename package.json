@@ -1,51 +1,50 @@
 {
-  "name": "env-schema",
-  "version": "5.2.0",
-  "description": "Validate your env variable using Ajv and dotenv",
-  "main": "index.js",
+  "name": "nested-env-schema",
+  "version": "1.0.0",
+  "description": "Validate & extract your env variables using nested JSON schema, Ajv and dotenv",
+  "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "standard | snazzy",
-    "test": "npm run test:unit && npm run test:typescript",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "test": "yarn test:unit && yarn test:typescript",
     "test:unit": "tap",
     "test:typescript": "tsd"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fastify/env-schema.git"
+    "url": "git+https://github.com/pksunkara/nested-env-schema.git"
   },
   "keywords": [
     "ajv",
     "env",
+    "nested",
     "schema",
     "json",
     "dotenv",
     "validate",
     "extract"
   ],
-  "author": "Matteo Collina <hello@matteocollina.com>",
+  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.github.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fastify/env-schema/issues"
+    "url": "https://github.com/pksunkara/nested-env-schema/issues"
   },
-  "homepage": "https://github.com/fastify/env-schema#readme",
   "dependencies": {
     "ajv": "^8.0.0",
     "dotenv": "^16.0.0",
     "dotenv-expand": "^10.0.0"
   },
   "devDependencies": {
-    "@fastify/pre-commit": "^2.0.2",
     "@sinclair/typebox": "^0.29.1",
     "ajv-formats": "^2.1.1",
-    "fluent-json-schema": "^4.0.0",
-    "snazzy": "^9.0.0",
-    "standard": "^17.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
     "tap": "^16.0.0",
     "tsd": "^0.28.0"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+  }
 }

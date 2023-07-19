@@ -111,5 +111,5 @@ expectType<EnvData>(envSchemaWithType);
 const envSchemaTypebox = envSchema<SchemaTypebox>({ schema: schemaTypebox });
 expectType<SchemaTypebox>(envSchemaTypebox);
 
-expectType<KeywordDefinition>(keywords.separator)
-expectType<KeywordDefinition>(envSchema.keywords.separator)
+expectType<KeywordDefinition>(keywords.separator);
+expectType<KeywordDefinition>(envSchema.keywords.separator);

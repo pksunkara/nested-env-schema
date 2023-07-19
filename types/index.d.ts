@@ -2,7 +2,7 @@ import Ajv, { KeywordDefinition, JSONSchemaType } from 'ajv';
 import { AnySchema } from 'ajv/dist/core';
 import { DotenvConfigOptions } from 'dotenv';
 
-type EnvSchema = typeof envSchema
+type EnvSchema = typeof envSchema;
 
 declare namespace envSchema {
   export type { JSONSchemaType };
@@ -18,19 +18,21 @@ declare namespace envSchema {
     dotenv?: boolean | DotenvConfigOptions;
     expandEnv?: boolean;
     ajv?:
-    | Ajv
-    | {
-      customOptions(ajvInstance: Ajv): Ajv;
-    };
+      | Ajv
+      | {
+          customOptions(ajvInstance: Ajv): Ajv;
+        };
   };
 
   export const keywords: {
-    separator: KeywordDefinition
-  }
+    separator: KeywordDefinition;
+  };
 
-  export const envSchema: EnvSchema
-  export { envSchema as default }
+  export const envSchema: EnvSchema;
+  export { envSchema as default };
 }
 
-declare function envSchema<T = envSchema.EnvSchemaData>(_opts?: envSchema.EnvSchemaOpt<T>): T
-export = envSchema
+declare function envSchema<T = envSchema.EnvSchemaData>(
+  _opts?: envSchema.EnvSchemaOpt<T>,
+): T;
+export = envSchema;

@@ -1,15 +1,15 @@
-'use strict'
+'use strict';
 
-const { test } = require('tap')
-const envSchema = require('../index')
+const { test } = require('tap');
+const envSchema = require('../lib/index');
 
-test('no globals', t => {
-  t.plan(2)
+test('no globals', (t) => {
+  t.plan(2);
 
   const options = {
     confKey: 'secrets',
     data: {
-      MONGO_URL: 'good'
+      MONGO_URL: 'good',
     },
     schema: {
       $id: 'schema:dotenv',
@@ -18,21 +18,21 @@ test('no globals', t => {
       properties: {
         PORT: {
           type: 'integer',
-          default: 3000
+          default: 3000,
         },
         MONGO_URL: {
-          type: 'string'
-        }
-      }
-    }
-  }
+          type: 'string',
+        },
+      },
+    },
+  };
 
   {
-    const conf = envSchema(JSON.parse(JSON.stringify(options)))
-    t.strictSame(conf, { MONGO_URL: 'good', PORT: 3000 })
+    const conf = envSchema(JSON.parse(JSON.stringify(options)));
+    t.strictSame(conf, { MONGO_URL: 'good', PORT: 3000 });
   }
   {
-    const conf = envSchema(JSON.parse(JSON.stringify(options)))
-    t.strictSame(conf, { MONGO_URL: 'good', PORT: 3000 })
+    const conf = envSchema(JSON.parse(JSON.stringify(options)));
+    t.strictSame(conf, { MONGO_URL: 'good', PORT: 3000 });
   }
-})
+});
