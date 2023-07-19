@@ -111,6 +111,25 @@ const tests = [
       },
     },
   },
+  {
+    name: 'simple nested object - ok - without properties',
+    schema: {
+      type: 'object',
+      properties: {
+        K8S: {
+          type: 'object',
+        },
+      },
+    },
+    isOk: true,
+    confExpected: {
+      K8S: {
+        NAMESPACE: 'pippo',
+        CLUSTER_ID: 'pluto',
+        CLUSTER_PASS: 'neptune',
+      },
+    },
+  },
 ];
 
 tests.forEach(function (testConf) {
