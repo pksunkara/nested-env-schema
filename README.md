@@ -15,7 +15,7 @@ yarn add nested-env-schema
 ## Usage
 
 ```js
-const envSchema = require('env-schema');
+const envSchema = require('nested-env-schema');
 
 const schema = {
   type: 'object',
@@ -66,7 +66,7 @@ see [DotenvConfigOptions](https://github.com/motdotla/dotenv#options)
 Optionally, the user can supply their own ajv instance:
 
 ```js
-const envSchema = require('env-schema');
+const envSchema = require('nested-env-schema');
 const Ajv = require('ajv');
 
 const schema = {
@@ -131,7 +131,7 @@ When present, the provided schema value will be split on this value.
 Example:
 
 ```js
-const envSchema = require('env-schema');
+const envSchema = require('nested-env-schema');
 
 const schema = {
   type: 'object',
@@ -160,7 +160,7 @@ const config = envSchema({
 The ajv keyword definition objects can be accessed through the property `keywords` on the `envSchema` function:
 
 ```js
-const envSchema = require('env-schema');
+const envSchema = require('nested-env-schema');
 const Ajv = require('ajv');
 
 const schema = {
@@ -196,7 +196,7 @@ console.log(config);
 You can specify the type of your `config`:
 
 ```ts
-import { envSchema, JSONSchemaType } from 'env-schema';
+import { envSchema, JSONSchemaType } from 'nested-env-schema';
 
 interface Env {
   PORT: number;
@@ -221,7 +221,7 @@ const config = envSchema({
 You can also use a `JSON Schema` library like `typebox`:
 
 ```ts
-import { envSchema } from 'env-schema';
+import { envSchema } from 'nested-env-schema';
 import { Static, Type } from '@sinclair/typebox';
 
 const schema = Type.Object({
