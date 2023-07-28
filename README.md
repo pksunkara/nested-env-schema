@@ -116,6 +116,15 @@ const config = envSchema({
 
 Note that it is mandatory returning the ajv instance.
 
+### Order of configuration loading
+
+The order of precedence for configuration data is as follows, from least
+significant to most:
+
+1. Data sourced from `.env` file (when `dotenv` configuration option is set)
+2. Data sourced from environment variables in `process.env`
+3. Data provided via the `data` configuration option
+
 ### Custom keywords
 
 This library supports the following Ajv custom keywords:
