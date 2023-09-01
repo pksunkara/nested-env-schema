@@ -38,7 +38,7 @@
     "dotenv-expand": "^10.0.0"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.30.0",
+    "@sinclair/typebox": "^0.31.8",
     "ajv-formats": "^2.1.1",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.0.0",
