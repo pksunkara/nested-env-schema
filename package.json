@@ -40,7 +40,7 @@
   "devDependencies": {
     "@sinclair/typebox": "^0.31.8",
     "ajv-formats": "^2.1.1",
-    "eslint": "^8.45.0",
+    "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
