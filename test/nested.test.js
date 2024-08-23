@@ -139,7 +139,6 @@ tests.forEach(function (testConf) {
       data: testConf.data,
       dotenv: testConf.dotenv,
       dotenvConfig: testConf.dotenvConfig,
-      expandEnv: testConf.expandEnv,
     };
 
     makeTest(

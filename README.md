@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/nested-env-schema.svg?style=flat)](https://www.npmjs.com/package/nested-env-schema)
 
 Validate & extract your env variables using nested [JSON schema](https://json-schema.org/), [Ajv](http://npm.im/ajv) and
-[dotenv](http://npm.im/dotenv).
+[dotenvx](https://dotenvx.com/).
 
 ## Install
 
@@ -48,7 +48,7 @@ const schema = {
 const config = envSchema({
   schema: schema,
   data: data, // optional, default: process.env
-  dotenv: true, // load .env if it is there, default: false
+  dotenv: true, // load .env file if it is there, default: false
   // or you can pass DotenvConfigOptions
   // dotenv: {
   //   path: '/custom/path/to/.env'
@@ -59,7 +59,7 @@ console.log(config);
 // output: { PORT: 3000, SENTRY: { ENABLED: false, DSN: 'something' } }
 ```
 
-see [DotenvConfigOptions](https://github.com/motdotla/dotenv#options)
+see [DotenvConfigOptions](https://github.com/dotenvx/dotenvx)
 
 ### Custom ajv instance
 

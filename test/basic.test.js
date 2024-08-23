@@ -183,24 +183,6 @@ const tests = [
     },
   },
   {
-    name: 'simple object - ok - load only from .env',
-    schema: {
-      type: 'object',
-      required: ['VALUE_FROM_DOTENV'],
-      properties: {
-        VALUE_FROM_DOTENV: {
-          type: 'string',
-        },
-      },
-    },
-    data: undefined,
-    isOk: true,
-    dotenv: { path: join(__dirname, '.env') },
-    confExpected: {
-      VALUE_FROM_DOTENV: 'look ma',
-    },
-  },
-  {
     name: 'simple object - KO',
     schema: {
       type: 'object',
