@@ -1,4 +1,4 @@
 node_modules
-yarn.lock
+pnpm-lock.yaml
 *.log
 .nyc_output

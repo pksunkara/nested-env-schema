@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
       - name: Cache dependencies
         uses: actions/cache@v3
         id: cache
@@ -26,18 +30,22 @@ jobs:
           restore-keys: |
             deps-
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
       - name: Test
-        run: yarn test
+        run: pnpm test
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
       - name: Cache dependencies
         uses: actions/cache@v3
         id: cache
@@ -47,8 +55,8 @@ jobs:
           restore-keys: |
             deps-
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
       - name: Lint check
-        run: yarn lint
+        run: pnpm lint
       - name: Formatting check
-        run: yarn format-check
+        run: pnpm format-check

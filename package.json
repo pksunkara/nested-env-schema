@@ -9,7 +9,7 @@
     "format-check": "prettier --check .",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
-    "test": "yarn test:unit && yarn test:typescript",
+    "test": "pnpm test:unit && pnpm test:typescript",
     "test:unit": "tap",
     "test:typescript": "tsd"
   },

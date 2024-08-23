@@ -9,7 +9,7 @@ Validate & extract your env variables using nested [JSON schema](https://json-sc
 ## Install
 
 ```
-yarn add nested-env-schema
+pnpm add nested-env-schema
 ```
 
 ## Usage
