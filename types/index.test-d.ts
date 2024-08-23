@@ -80,11 +80,6 @@ const optWithDotEnvOpt: EnvSchemaOpt = {
 };
 expectType<EnvSchemaOpt>(optWithDotEnvOpt);
 
-const optWithEnvExpand: EnvSchemaOpt = {
-  expandEnv: true,
-};
-expectType<EnvSchemaOpt>(optWithEnvExpand);
-
 const optWithAjvInstance: EnvSchemaOpt = {
   ajv: new Ajv(),
 };

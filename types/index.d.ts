@@ -1,6 +1,6 @@
 import Ajv, { KeywordDefinition, JSONSchemaType } from 'ajv';
 import { AnySchema } from 'ajv/dist/core';
-import { DotenvConfigOptions } from 'dotenv';
+import { DotenvConfigOptions } from '@dotenvx/dotenvx';
 
 type EnvSchema = typeof envSchema;
 
@@ -16,7 +16,6 @@ declare namespace envSchema {
     data?: [EnvSchemaData, ...EnvSchemaData[]] | EnvSchemaData;
     env?: boolean;
     dotenv?: boolean | DotenvConfigOptions;
-    expandEnv?: boolean;
     ajv?:
       | Ajv
       | {
