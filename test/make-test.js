@@ -3,6 +3,8 @@
 const envSchema = require('../lib/index');
 
 function makeTest(t, options, isOk, confExpected, errorMessage) {
+  const originalEnv = Object.assign({}, process.env);
+
   t.plan(1);
   options = Object.assign({ confKey: 'config' }, options);
 
@@ -15,6 +17,8 @@ function makeTest(t, options, isOk, confExpected, errorMessage) {
       return;
     }
     t.strictSame(err.message, errorMessage);
+  } finally {
+    process.env = Object.assign({}, originalEnv);
   }
 }
 

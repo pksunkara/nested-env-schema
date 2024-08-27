@@ -18,10 +18,25 @@ const tests = [
     },
     data: undefined,
     isOk: true,
-    dotenv: { path: join(__dirname, '.env') },
+    dotenv: { path: join(__dirname, 'envs', 'normal', '.env') },
     confExpected: {
       VALUE_FROM_DOTENV: 'look ma',
     },
+  },
+  {
+    name: 'simple object - ok - load encrypted .env as empty',
+    schema: {
+      type: 'object',
+      properties: {
+        VALUE_FROM_DOTENV: {
+          type: 'string',
+        },
+      },
+    },
+    data: undefined,
+    isOk: true,
+    dotenv: { path: join(__dirname, 'envs', 'encrypted', '.env') },
+    confExpected: {},
   },
 ];
 

@@ -43,7 +43,7 @@ const tests = [
       },
     },
     isOk: true,
-    dotenv: { path: join(__dirname, '.env') },
+    dotenv: { path: join(__dirname, 'envs', 'normal', '.env') },
     confExpected: {
       URL: 'https://prefix.$K8S_NAMESPACE.$K8S_CLUSTERID.my.domain.com',
       EXPANDED_VALUE_FROM_DOTENV: 'the password is password!',

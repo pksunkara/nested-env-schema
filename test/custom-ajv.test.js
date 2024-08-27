@@ -196,7 +196,7 @@ const tests = [
     },
     data: undefined,
     isOk: true,
-    dotenv: { path: join(__dirname, '.env') },
+    dotenv: { path: join(__dirname, 'envs', 'normal', '.env') },
     confExpected: {
       VALUE_FROM_DOTENV: 'look ma',
     },
