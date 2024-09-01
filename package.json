@@ -37,7 +37,7 @@
     "@dotenvx/dotenvx": "^1.11.1"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.32.35",
+    "@sinclair/typebox": "^0.33.7",
     "ajv-formats": "^2.1.1",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.0.0",
