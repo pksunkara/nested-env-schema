@@ -1,6 +1,6 @@
 {
   "name": "nested-env-schema",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Validate & extract your env variables using nested JSON schema, Ajv and dotenvx",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
