@@ -7,7 +7,7 @@ import envSchema, {
   default as envSchemaDefault,
 } from '..';
 import Ajv, { KeywordDefinition, JSONSchemaType } from 'ajv';
-import { Static, Type } from '@sinclair/typebox';
+import { z } from 'zod/v4';
 
 interface EnvData {
   PORT: number;
@@ -24,11 +24,11 @@ const schemaWithType: JSONSchemaType<EnvData> = {
   },
 };
 
-const schemaTypebox = Type.Object({
-  PORT: Type.Number({ default: 3000 }),
+const schemaZod = z.object({
+  PORT: z.number().default(3000),
 });
 
-type SchemaTypebox = Static<typeof schemaTypebox>;
+type SchemaZod = z.infer<typeof schemaZod>;
 
 const data = {
   foo: 'bar',
@@ -41,10 +41,10 @@ expectType<EnvSchemaData>(envSchemaDefault());
 const emptyOpt: EnvSchemaOpt = {};
 expectType<EnvSchemaOpt>(emptyOpt);
 
-const optWithSchemaTypebox: EnvSchemaOpt = {
-  schema: schemaTypebox,
+const optWithSchemaZod: EnvSchemaOpt = {
+  schema: z.toJSONSchema(schemaZod),
 };
-expectType<EnvSchemaOpt>(optWithSchemaTypebox);
+expectType<EnvSchemaOpt>(optWithSchemaZod);
 
 const optWithSchemaWithType: EnvSchemaOpt<EnvData> = {
   schema: schemaWithType,
@@ -103,8 +103,10 @@ expectError<EnvSchemaOpt>({
 const envSchemaWithType = envSchema({ schema: schemaWithType });
 expectType<EnvData>(envSchemaWithType);
 
-const envSchemaTypebox = envSchema<SchemaTypebox>({ schema: schemaTypebox });
-expectType<SchemaTypebox>(envSchemaTypebox);
+const envSchemaZod = envSchema<SchemaZod>({
+  schema: z.toJSONSchema(schemaZod),
+});
+expectType<SchemaZod>(envSchemaZod);
 
 expectType<KeywordDefinition>(keywords.separator);
 expectType<KeywordDefinition>(envSchema.keywords.separator);

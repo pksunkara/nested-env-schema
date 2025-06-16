@@ -227,20 +227,20 @@ const config = envSchema({
 });
 ```
 
-You can also use a `JSON Schema` library like `typebox`:
+You can also use a `JSON Schema` library like `zod`:
 
 ```ts
 import { envSchema } from 'nested-env-schema';
-import { Static, Type } from '@sinclair/typebox';
+import { z } from 'zod/v4';
 
-const schema = Type.Object({
-  PORT: Type.Number({ default: 3000 }),
+const schema = z.object({
+  PORT: z.number().default(3000),
 });
 
-type Schema = Static<typeof schema>;
+type Schema = z.infer<typeof schema>;
 
 const config = envSchema<Schema>({
-  schema,
+  schema: z.toJSONSchema(schema),
 });
 ```
 

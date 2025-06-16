@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "format": "prettier --write .",
+    "format": "prettier --write . --log-level warn",
     "format-check": "prettier --check .",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
@@ -27,7 +27,7 @@
     "validate",
     "extract"
   ],
-  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.github.com)",
+  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (pksunkara.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pksunkara/nested-env-schema/issues"
@@ -37,13 +37,13 @@
     "@dotenvx/dotenvx": "^1.11.1"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.33.7",
-    "ajv-formats": "^2.1.1",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.0",
-    "tap": "^21.0.1",
-    "tsd": "^0.29.0"
+    "ajv-formats": "~2.1.1",
+    "eslint": "~8.57.0",
+    "eslint-config-prettier": "~9.0.0",
+    "eslint-plugin-prettier": "~5.0.0",
+    "prettier": "~3.0.1",
+    "tap": "~21.0.1",
+    "tsd": "~0.29.0",
+    "zod": "~3.25.64"
   }
 }

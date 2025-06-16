@@ -2,7 +2,6 @@
 
 const t = require('tap');
 const makeTest = require('./make-test');
-const { join } = require('path');
 
 process.env.K8S_NAMESPACE = 'pippo';
 process.env.K8S_CLUSTER_ID = 'pluto';
@@ -10,7 +9,7 @@ process.env.K8S_CLUSTER_PASS = 'neptune';
 
 const tests = [
   {
-    name: 'empty ok',
+    name: 'simple nested object - ok',
     schema: {
       type: 'object',
       properties: {
@@ -30,7 +29,7 @@ const tests = [
     },
   },
   {
-    name: 'empty ok - with default',
+    name: 'simple nested object - ok - with default',
     schema: {
       type: 'object',
       properties: {
