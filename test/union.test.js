@@ -21,7 +21,7 @@ const tests = [
                 },
               },
               required: ['URL'],
-              additionalProperties: false,
+              additionalProperties: {},
             },
             {
               type: 'object',
@@ -51,7 +51,7 @@ const tests = [
     },
   },
   {
-    name: 'simple nested object - ok - with both',
+    name: 'simple union - ok - with second',
     schema: {
       type: 'object',
       required: ['REDIS'],
@@ -66,7 +66,54 @@ const tests = [
                 },
               },
               required: ['URL'],
+              additionalProperties: {},
+            },
+            {
+              type: 'object',
+              properties: {
+                HOST: {
+                  type: 'string',
+                },
+                PORT: {
+                  type: 'number',
+                },
+              },
+              required: ['HOST', 'PORT'],
               additionalProperties: false,
+            },
+          ],
+        },
+      },
+    },
+    data: {
+      REDIS_HOST: 'localhost',
+      REDIS_PORT: 6379,
+    },
+    isOk: true,
+    confExpected: {
+      REDIS: {
+        HOST: 'localhost',
+        PORT: 6379,
+      },
+    },
+  },
+  {
+    name: 'simple union - ok - with both',
+    schema: {
+      type: 'object',
+      required: ['REDIS'],
+      properties: {
+        REDIS: {
+          anyOf: [
+            {
+              type: 'object',
+              properties: {
+                URL: {
+                  type: 'string',
+                },
+              },
+              required: ['URL'],
+              additionalProperties: {},
             },
             {
               type: 'object',
@@ -94,11 +141,14 @@ const tests = [
     confExpected: {
       REDIS: {
         URL: 'redis://localhost:6379',
+        HOST: 'localhost',
+        PORT: 6379,
       },
     },
   },
+  // TODO: https://github.com/ajv-validator/ajv/issues/127
   // {
-  //   name: 'simple nested object - ok - with default',
+  //   name: 'simple union - ok - with default',
   //   schema: {
   //     type: 'object',
   //     required: ['REDIS'],
@@ -113,7 +163,6 @@ const tests = [
   //               },
   //             },
   //             required: ['URL'],
-  //             additionalProperties: false,
   //           },
   //           {
   //             type: 'object',
