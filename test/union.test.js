@@ -2,7 +2,6 @@
 
 const t = require('tap');
 const makeTest = require('./make-test');
-const { z } = require('zod/v4');
 
 const tests = [
   {
